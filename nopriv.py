@@ -298,12 +298,22 @@ def returnIndexPage():
 
 def allFolders(IMAPFOLDER_ORIG, mail):
     response = []
+    noallmail = false
+
+    if IMAPFOLDER_ORIG[0] == "NoPriv_Almost_All":
+        IMAPFOLDER_ORIG[0] = "NoPriv_All"
+        noallmail = true
+
     if len(IMAPFOLDER_ORIG) == 1 and IMAPFOLDER_ORIG[0] == "NoPriv_All":
         maillist = mail.list()
         for imapFolder in sorted(maillist[1]):
             imapFolder = re.sub(r"(?i)\(.*\)", "", imapFolder, flags=re.DOTALL)
             imapFolder = re.sub(r"(?i)\".\"", "", imapFolder, flags=re.DOTALL)
             imapFolder = re.sub(r"(?i)\"", "", imapFolder, flags=re.DOTALL)
+
+            if noallmail == true and imapFolder == "All Mail":
+                continue
+
             imapFolder = imapFolder.strip()
             response.append(imapFolder)
     else:
