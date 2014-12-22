@@ -105,6 +105,7 @@ If you want to use SSL to connect to IMAP, or want to use incremental backups, e
 
 **If you want to backup all folders, enter `NoPriv_All` as imap_folder.**
 
+**If you want to backup all folders except "All Mail", enter `NoPriv_Almost_All` as imap_folder.**
 
 `Nopriv.ini` can be in the following locations:
  
